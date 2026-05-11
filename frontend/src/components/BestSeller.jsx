@@ -12,15 +12,22 @@ const BestSeller = () => {
   //     setBestSeller(bestProduct.slice(0, 5))
   // }, []) // not working because is not rendering when products are updated
 
-   useEffect(() => {
-    if (products && products.length > 0) {
-      const bestProduct = products.filter(
-        (item) => item.bestseller === true
-      );
-      setBestSeller(bestProduct.slice(0, 5));
-    }
-  }, [products]);
-  
+  //  useEffect(() => {
+  //   if (products && products.length > 0) {
+  //     const bestProduct = products.filter(
+  //       (item) => item.bestseller === true
+  //     );
+  //     setBestSeller(bestProduct.slice(0, 5));
+  //   }
+  // }, [products]);
+  useEffect(() => {
+
+    const bestProduct = products.filter((item) => (item.bestseller));
+
+    setBestSeller(bestProduct.slice(0, 5));
+
+  }, [products])
+
 
 
   return (
@@ -33,11 +40,11 @@ const BestSeller = () => {
       </div>
 
       <div className='grid gird-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
-       {
-        bestSeller.map((item,index)=>(
-          <ProductItem key={index} id={item._id} name={item.name} image={item.image} price={item.price} />
-        ))
-       }
+        {
+          bestSeller.map((item, index) => (
+            <ProductItem key={index} id={item._id} name={item.name} image={item.image} price={item.price} />
+          ))
+        }
 
       </div>
     </div>
