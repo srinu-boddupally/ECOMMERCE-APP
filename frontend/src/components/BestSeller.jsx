@@ -6,20 +6,7 @@ import ProductItem from './ProductItem';
 const BestSeller = () => {
   const { products } = useContext(ShopContext);
   const [bestSeller, setBestSeller] = useState([]);
-
-  // useEffect(() => {
-  //     const bestProduct = products.filter((item) => (item.bestSeller));
-  //     setBestSeller(bestProduct.slice(0, 5))
-  // }, []) // not working because is not rendering when products are updated
-
-  //  useEffect(() => {
-  //   if (products && products.length > 0) {
-  //     const bestProduct = products.filter(
-  //       (item) => item.bestseller === true
-  //     );
-  //     setBestSeller(bestProduct.slice(0, 5));
-  //   }
-  // }, [products]);
+  
   useEffect(() => {
 
     const bestProduct = products.filter((item) => (item.bestseller));

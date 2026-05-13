@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-// import { products } from "../assets/assets";
+// import { products } from "../assets/assets"; it is local assets works
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
@@ -15,6 +15,7 @@ const ShopContextProvider = (props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
+  const [token, setToken] = useState('')
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
@@ -88,10 +89,10 @@ const ShopContextProvider = (props) => {
     try {
 
       const response = await axios.get(backendUrl + '/api/product/list')
-          console.log(response.data);
-      if(response.data.success){
+      // console.log(response.data);
+      if (response.data.success) {
         setProducts(response.data.products)
-      }else{
+      } else {
         toast.error(response.data.message)
       }
 
@@ -101,9 +102,15 @@ const ShopContextProvider = (props) => {
     }
   }
 
- 
+
   useEffect(() => {
     getProductsData()
+  }, [])
+
+   useEffect(() => {
+    if(!token && localStorage.getItem('token')){
+      setToken(localStorage.getItem('token'))
+    }
   }, [])
 
   const value = {
@@ -111,7 +118,8 @@ const ShopContextProvider = (props) => {
     search, setSearch, showSearch, setShowSearch,
     cartItems, addToCart,
     getCartCount, updateQuantity,
-    getCartAmount, navigate, backendUrl
+    getCartAmount, navigate, backendUrl,
+    setToken,token
   }
 
   return (
