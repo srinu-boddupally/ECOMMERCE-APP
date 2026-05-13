@@ -76,7 +76,7 @@ const Navbar = () => {
               My Profile
             </p>
 
-            <p className='cursor-pointer hover:text-black'>
+            <p onClick={()=>navigate('/orders')}className='cursor-pointer hover:text-black'>
               Orders
             </p>
 
