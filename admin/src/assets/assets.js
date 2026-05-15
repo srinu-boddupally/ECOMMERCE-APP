@@ -61,6 +61,7 @@ import order_icon from './order_icon.png'
 import upload_area from './upload_area.png'
 import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
+import parcel_icon from './parcel_icon.svg'
 import bin_icon from './bin_icon.png'
 import dropdown_icon from './dropdown_icon.png'
 import exchange_icon from './exchange_icon.png'
@@ -84,6 +85,7 @@ export const assets = {
     upload_area,
     hero_img,
     cart_icon,
+    parcel_icon,
     dropdown_icon,
     exchange_icon,
     profile_icon,
